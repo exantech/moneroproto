@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/cobinhood/moneroutil"
+	"github.com/exantech/moneroutil"
 )
 
 func hashFromString(str string) moneroutil.Hash {
