@@ -1,6 +1,6 @@
 package moneroproto
 
-import "github.com/cobinhood/moneroutil"
+import "github.com/exantech/moneroutil"
 
 type GetHashesFastRequest struct {
 	BlockIds    []byte `monerobinkv:"block_ids"`

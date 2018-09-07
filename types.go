@@ -2,9 +2,9 @@ package moneroproto
 
 import (
 	"encoding/hex"
-
-	"github.com/cobinhood/moneroutil"
 	"errors"
+
+	"github.com/exantech/moneroutil"
 )
 
 var (
