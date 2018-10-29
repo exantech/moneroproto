@@ -117,11 +117,7 @@ func unpackVarint(reader io.Reader) (uint64, error) {
 	buf := make([]byte, 8)
 	r, err := reader.Read(buf[0:1])
 
-	if err == io.EOF {
-		return 0, ErrUnexpectedEof
-	}
-
-	if err != nil {
+	if err != nil && err != io.EOF {
 		return 0, err
 	}
 

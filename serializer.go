@@ -380,7 +380,7 @@ func decodeValue(reader io.Reader, valueType byte, v reflect.Value) error {
 		}
 		v.SetInt(val)
 	case TypeInt32:
-		if v.Kind() != reflect.Int32 || v.Kind() != reflect.Int {
+		if v.Kind() != reflect.Int32 && v.Kind() != reflect.Int {
 			return errors.New("type mismatch")
 		}
 		var val int32
