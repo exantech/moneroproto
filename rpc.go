@@ -3,6 +3,7 @@ package moneroproto
 import "github.com/exantech/moneroutil"
 
 type GetHashesFastRequest struct {
+	Client      []byte `monerobinkv:"client"`
 	BlockIds    []byte `monerobinkv:"block_ids"`
 	StartHeight uint64 `monerobinkv:"start_height"`
 }
@@ -21,6 +22,8 @@ type GetHashesFastResponse struct {
 	CurrentHeight uint64 `monerobinkv:"current_height"`
 	Status        []byte `monerobinkv:"status"`
 	Untrusted     bool   `monerobinkv:"untrusted"`
+	Credits       uint64 `monerobinkv:"credits"`
+	TopHash       []byte `monerobinkv:"top_hash"`
 }
 
 func (g *GetHashesFastResponse) SetHashes(hashes []moneroutil.Hash) {
@@ -32,6 +35,7 @@ func (g *GetHashesFastResponse) GetHashes() (error, []moneroutil.Hash) {
 }
 
 type GetBlocksFastRequest struct {
+	Client      []byte `monerobinkv:"client"`
 	BlockIds    []byte `monerobinkv:"block_ids"`
 	StartHeight uint64 `monerobinkv:"start_height"`
 	Prune       bool   `monerobinkv:"prune"`
@@ -47,8 +51,10 @@ func (g *GetBlocksFastRequest) GetHashes() (error, []moneroutil.Hash) {
 }
 
 type BlockCompleteEntry struct {
-	Block []byte   `monerobinkv:"block"`
-	Txs   [][]byte `monerobinkv:"txs"`
+	Pruned      bool     `monerobinkv:"pruned"`
+	Block       []byte   `monerobinkv:"block"`
+	BlockWeight uint64   `monerobinkv:"block_weight"`
+	Txs         [][]byte `monerobinkv:"txs"`
 }
 
 type TxOutputIndices struct {
@@ -66,4 +72,6 @@ type GetBlocksFastResponse struct {
 	Status        []byte               `monerobinkv:"status"`
 	OutputIndices []BlockOutputIndices `monerobinkv:"output_indices"`
 	Untrusted     bool                 `monerobinkv:"untrusted"`
+	Credits       uint64               `monerobinkv:"credits"`
+	TopHash       []byte               `monerobinkv:"top_hash"`
 }
